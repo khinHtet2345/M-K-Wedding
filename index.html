@@ -10,6 +10,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Courgette&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
   <style>
@@ -147,7 +149,8 @@
       color: var(--gold);
       /* font-family: "ImperialScript", Georgia, serif; */
       /* font-family: "Georgia", serif; */
-      font-family: "Cormorant Garamond", serif;
+      /* font-family: "Cormorant Garamond", serif; */
+      font-family: "Playfair", serif;
       font-size: 50px;
       font-weight: 600;
       font-style: italic;
@@ -489,7 +492,7 @@
       display: grid;
       width: min(100%, 700px);
       min-height: min(68svh, 520px);
-      margin: 12px auto 0;
+      margin: 30px auto 0;
       place-items: center;
     }
 
@@ -505,14 +508,15 @@
     .couple-names {
       position: relative;
       z-index: 1;
-      width: min(82%, 560px);
       margin: 8px 0 0;
       color: var(--gold);
       /* font-family: "ImperialScript", Georgia, serif; */
       /* font-family: "Dancing Script", cursive; */
-      font-family: math;
+      /* font-family: math; */
+      font-family: "Playfair", serif;
       font-size: 36px;
       font-weight: 500;
+      font-style: italic;
       line-height: 1.14;
     }
 
@@ -541,6 +545,36 @@
       height: 1px;
       background: var(--line);
       content: "";
+    }
+
+    .welcome-frame {
+        /* width: min(82%, 560px); */
+        width: min(68%, 600px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        justify-content: center;
+    }
+    .welcome-text {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      color: var(--olive);
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      width: 65%;
+    }
+
+    .welcome-date-time {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--olive);
     }
 
     .section {
@@ -653,6 +687,17 @@
       color: var(--gold);
       margin-top: 4px;
       margin-right: 8px;
+    }
+
+    .heart-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+    }
+
+    .pause-icon, .music-icon {
+      width: 20px;
+      height: 20px;
     }
 
     .calendar-card {
@@ -955,6 +1000,9 @@
     }
 
     @media (max-width: 480px) {
+      .welcome-text {
+        width: 80%;
+      }
       .schedule-card {
         padding: 0 22px;
       }
@@ -1259,6 +1307,40 @@
         transition: none;
       }
     }
+
+    /* down scroll */
+    .scroll-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 34px;
+    }
+    .scroll-arrow {
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+      border-right: 2px solid #d2a264;
+      border-bottom: 2px solid #d2a264;
+      animation: arrow-wave 1s infinite;
+      animation-direction: alternate;
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          animation-delay: .1s *$i;
+        }
+      }
+    }
+
+    @keyframes arrow-wave {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: .5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 
@@ -1272,7 +1354,11 @@
 
         <div class="cover-content" id="cover">
           <p class="cover-label">မင်္ဂလာဧည့်ခံပွဲဖိတ်စာ</p>
-          <div class="cover-divider" aria-hidden="true">𖹭</div>
+          <div class="cover-divider" aria-hidden="true">
+            <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+            </svg>
+          </div>
           <h1 class="cover-couple-names" aria-label="Myint and Khin">
             <span>MH</span>
             <!-- <span class="cover-ampersand" aria-hidden="true">&amp;</span> -->
@@ -1281,7 +1367,11 @@
           </h1>
           <p class="cover-place-time">22 November 2026, Sunday</p>
           <p class="cover-place-time">Excel Treasure Hotel</p>
-          <div class="cover-divider" aria-hidden="true">𖹭</div>
+          <div class="cover-divider" aria-hidden="true">
+            <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+            </svg>
+          </div>
           <button class="open-link" id="open-invitation" type="button"
             aria-controls="wedding-invitation">ဖွင့်ဖတ်မယ်</button>
         </div>
@@ -1293,17 +1383,44 @@
       <h1 class="welcome" id="welcome-title">Welcome to our wedding ceremony</h1>
       <div class="frame-wrap">
         <img class="frame-art" src="assets/images/decorations/background-1.webp" alt="" aria-hidden="true">
-        <div class="couple-names" aria-label="Myint Htwe and Khin Htet Aung">
-          <span>Myint Htwe</span>
-          <span class="ampersand">&amp;</span>
-          <span>Khin Htet Aung</span>
+        <div class="welcome-frame">
+          <h1 class="welcome-text">Please join us as we celebrate our marriage</h1>
+          <div class="couple-names" aria-label="Myint Htwe and Khin Htet Aung">
+            <span>Myint Htwe</span>
+            <span class="ampersand">
+              <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+              </svg>
+            </span>
+            <span>Khin Htet Aung</span>
+          </div>
+          <div class="welcome-date-time">
+            <span>NOV</span>
+            <span>|</span>
+            <span>
+              <div>SUN</div>
+              <div>22</div>
+            </span>
+            <span>|</span>
+            <span>2026</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <div class="scroll-container">
+      <div class="scroll-arrow"></div>
+      <div class="scroll-arrow"></div>
+      <div class="scroll-arrow"></div>
+    </div>
+
     <section class="section ceremony-invitation" aria-labelledby="ceremony-title">
       <h2 class="section-title" id="ceremony-title">မင်္ဂလာဧည့်ခံပွဲ</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <p class="family-line custom-font">ဦးချစ်ဝင်း + ဒေါ်သိန်းမေ တို့၏သား</p>
       <p class="couple-name custom-font">မောင်မြင့်ထွေး</p>
       <p class="and custom-font">နှင့်</p>
@@ -1316,7 +1433,11 @@
 
     <section class="section wedding-time" aria-labelledby="wedding-time-title">
       <h2 class="section-title" id="wedding-time-title">မင်္ဂလာအချိန်အခါ</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <div class="time-details">
         <div class="time-row">
           <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -1353,7 +1474,11 @@
 
     <section class="section venue" aria-labelledby="venue-title">
       <h2 class="section-title" id="venue-title">မင်္ဂလာနေရာ</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <p class="venue-name">Excel Treasure Hotel</p>
       <p class="venue-address custom-font">အမှတ် (၅၂၀)၊ ကမ္ဘာအေးဘုရားလမ်း၊<br>ရွှေဂုံတိုင်၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်မြို့။</p>
       <img class="venue-map-artwork" src="assets/images/decorations/map.png"
@@ -1367,7 +1492,11 @@
 
     <section class="section event-schedule" aria-labelledby="schedule-title">
       <h2 class="section-title" id="schedule-title">မင်္ဂလာ အစီအစဉ်</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <div class="schedule-card">
         <ol class="schedule-list">
           <li class="schedule-item">
@@ -1441,7 +1570,11 @@
     <section class="section gallery-section" aria-labelledby="gallery-title">
       <p class="gallery-kicker">Pre-wedding</p>
       <h2 class="section-title" id="gallery-title">အမှတ်တရ ပုံရိပ်များ</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <!-- Splide slider markup temporarily commented out; showing scrapbook collage instead. -->
       <!--
       <div id="prewedding-gallery" class="splide" aria-label="Pre-wedding photo gallery">
@@ -1464,7 +1597,11 @@
 
     <section class="section countdown-section" aria-labelledby="countdown-title">
       <h2 class="section-title" id="countdown-title">မင်္ဂလာနေ့အထိ</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <p class="countdown-caption custom-font">အမှတ်တရနေ့လေးရောက်ဖို့</p>
       <div class="countdown-grid custom-font" id="wedding-countdown" role="timer" aria-label="မင်္ဂလာပွဲအထိ ကျန်ရှိချိန်">
         <div class="countdown-unit"><span class="countdown-value" id="countdown-days">00</span><span
@@ -1481,7 +1618,11 @@
     <section class="section" aria-labelledby="gift-title">
       <!-- <p class="gift-kicker">မင်္ဂလာလက်ဖွဲ့</p> -->
       <h2 class="section-title" id="gift-title">လက်ဖွဲ့ ပေးချင်တယ်ဆိုရင်</h2>
-      <div class="ceremony-divider" aria-hidden="true">𖹭</div>
+      <div class="ceremony-divider" aria-hidden="true">
+        <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"></path>
+        </svg>
+      </div>
       <p class="gift-message custom-font">ကိုယ်တိုင်ကြွရောက်ပေးတာက အကြီးဆုံးလက်ဖွဲ့ပါ။</p>
       <!-- <img class="qr" src="assets/qr/qr-1.jpg" alt="Khin Htet Aung ၏ KBZPay ငွေလွှဲရန် QR ကုဒ်" loading="lazy"> -->
       <div class="gift-details" aria-label="ငွေလွှဲရန် အချက်အလက်">
@@ -1546,7 +1687,21 @@
 
       function syncMusicButton() {
         const playing = !music.paused;
-        musicButton.textContent = playing ? '⏯' : '♫';
+        // musicButton.textContent = playing ? '⏯' : '♫';
+
+        musicButton.innerHTML = playing
+        ? `<svg class="pause-icon" viewBox="0 0 24 24"
+               fill="currentColor" aria-hidden="true">
+               <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+               <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+           </svg>`
+        : `<svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" />
+            </svg>`;
+
         musicButton.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
         musicButton.setAttribute('aria-pressed', String(playing));
       }
@@ -1704,5 +1859,4 @@
       });
     </script>
 </body>
-
 </html>
